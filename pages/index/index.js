@@ -50,5 +50,27 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  num1:0,
+  num2:0,
+  change:function(e){
+    this[e.currentTarget.id] = Number(e.detail.value)
+    this.num2=Number(e.detail.value)
+  },
+  change2:function(e){
+    // dataset.id 表示触发当前input组件的data-id 属性值 这个值分别为num1 和num2 通过这个来给数据绑定
+    this[e.target.dataset.id] = Number(e.detail.value)
+  },
+  data:{
+    result:""
+  },
+  compare:function(){
+    var str = '两数相等'
+    if(this.num1>this.num2){
+      str = " 第一个数字大"
+    }else if(this.num1<this.num2){
+      str  = "第二个数字大"
+    }
+    this.setData({result:str})
   }
 })
